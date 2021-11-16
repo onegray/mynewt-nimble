@@ -228,6 +228,7 @@ static void ble_ll_event_rx_pkt(struct ble_npl_event *ev);
 static void ble_ll_event_tx_pkt(struct ble_npl_event *ev);
 static void ble_ll_event_dbuf_overflow(struct ble_npl_event *ev);
 
+#if 0
 #if MYNEWT
 
 /* The BLE LL task data structure */
@@ -242,6 +243,7 @@ struct os_task g_ble_ll_task;
 OS_TASK_STACK_DEFINE(g_ble_ll_stack, BLE_LL_STACK_SIZE);
 
 #endif /* MYNEWT */
+#endif // 0
 
 /** Our global device address (public) */
 uint8_t g_dev_addr[BLE_DEV_ADDR_LEN];
@@ -1198,6 +1200,7 @@ ble_ll_event_comp_pkts(struct ble_npl_event *ev)
     ble_ll_conn_num_comp_pkts_event_send(NULL);
 }
 
+#if 0
 /**
  * Link Layer task.
  *
@@ -1228,6 +1231,7 @@ ble_ll_task(void *arg)
         ble_npl_event_run(ev);
     }
 }
+#endif //0
 
 /**
  * ble ll state set
@@ -1389,6 +1393,7 @@ ble_ll_mbuf_init(struct os_mbuf *m, uint8_t pdulen, uint8_t hdr)
 static void
 ble_ll_validate_task(void)
 {
+#if 0
 #ifdef MYNEWT
 #ifndef NDEBUG
     struct os_task_info oti;
@@ -1398,6 +1403,7 @@ ble_ll_validate_task(void)
     BLE_LL_ASSERT(oti.oti_stkusage < oti.oti_stksize);
 #endif
 #endif
+#endif //0
 }
 
 /**
@@ -1720,6 +1726,7 @@ ble_ll_init(void)
     ble_ll_dtm_init();
 #endif
 
+#if 0
 #if MYNEWT
     /* Initialize the LL task */
     os_task_init(&g_ble_ll_task, "ble_ll", ble_ll_task, NULL,
@@ -1733,4 +1740,5 @@ ble_ll_init(void)
  */
 
 #endif
+#endif //0
 }

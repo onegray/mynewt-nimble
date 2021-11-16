@@ -821,6 +821,8 @@ ble_ll_get_tx_pwr_compensation(void)
     return tx_path_pwr_compensation / 10;
 }
 
+#if 0
+
 /**
  * Process a LE command sent from the host to the controller. The HCI command
  * has a 3 byte command header followed by data. The header is:
@@ -1270,6 +1272,8 @@ ble_ll_hci_le_cmd_proc(const uint8_t *cmdbuf, uint8_t len, uint16_t ocf,
     return rc;
 }
 
+#endif // 0
+
 static int
 ble_ll_hci_disconnect(const uint8_t *cmdbuf, uint8_t len)
 {
@@ -1566,6 +1570,7 @@ ble_ll_hci_vs_cmd_proc(const uint8_t *cmdbuf, uint8_t len, uint16_t ocf,
 }
 #endif
 
+#if 0
 /**
  * Called to process an HCI command from the host.
  *
@@ -1677,6 +1682,13 @@ ble_ll_hci_cmd_proc(struct ble_npl_event *ev)
 
     BLE_LL_DEBUG_GPIO(HCI_CMD, 0);
 }
+#else
+static void
+ble_ll_hci_cmd_proc(struct ble_npl_event *ev)
+{
+    assert(0);
+}
+#endif
 
 /**
  * Sends an HCI command to the controller.  On success, the supplied buffer is
